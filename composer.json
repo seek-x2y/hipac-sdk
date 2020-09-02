@@ -1,0 +1,29 @@
+{
+    "name": "seek-x2y/hipac-sdk",
+    "description": "海拍客 SDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wmc",
+            "email": "wu_1511@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "hanson/foundation-sdk": "3.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Seekx2y\\HipacSDK\\": "./src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Seekx2y\\Tests\\": "./tests"
+        }
+    }
+}
