@@ -46,7 +46,7 @@ class Api extends AbstractAPI
 
         $data = $this->app->getConfig('common');
         if ($params) {
-            $data = array_merge(['data' => $params], $data);
+            $data = array_merge(['data' => json_encode($params)], $data);
         }
         $data['api']  = $api;
         $data['sign'] = $this->makeSign($data);
