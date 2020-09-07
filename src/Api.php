@@ -43,12 +43,14 @@ class Api extends AbstractAPI
      */
     public function request(string $api, array &$params = null, $httpMethod = 'POST')
     {
+
         $data = $this->app->getConfig('common');
         if ($params) {
-            $data = array_merge($params, $data);
+            $data = array_merge(['data' => $params], $data);
         }
-        $data['api'] = $api;
-        $response    = $this->getHttp()->request($httpMethod, $this->app->getConfig('url'), $data, $this->app->getConfig('debug'));
+        $data['api']  = $api;
+        $data['sign'] = $this->makeSign($data);
+        $response     = $this->getHttp()->request($httpMethod, $this->app->getConfig('url'), ['form_params' => $data]);
 
         return json_decode(strval($response->getBody()));
     }
